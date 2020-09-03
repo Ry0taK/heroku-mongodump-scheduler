@@ -2,9 +2,11 @@
 import datetime
 import subprocess
 import requests
-import pydrive
 import json
 import os
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+from oauth2client.service_account import ServiceAccountCredentials
 
 def send_discord(failed):
 
