@@ -7,7 +7,7 @@ import os
 process = subprocess.run(["mongodump", "--uri", os.environ.get("MONGODB_URI"), "--gzip", "--archive=backup.gz"])
 if process.returncode != 0:
     send_discord(True)
-    return
+    quit()
 
 send_discord(False)
     
