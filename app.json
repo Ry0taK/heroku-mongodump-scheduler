@@ -10,6 +10,9 @@
       "description": "URL of your Discord Webhook"
     }
   },
-  "environments": {
-  }
+  "buildpacks": [
+    {
+      "url": "https://github.com/trustradius/heroku-buildpack-mongo"
+    }
+  ]
 }
