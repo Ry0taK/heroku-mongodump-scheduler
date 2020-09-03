@@ -8,6 +8,9 @@
   "env": {
     "DISCORD_WEBHOOK": {
       "description": "URL of your Discord Webhook"
+    },
+    "MONGODB_URI": {
+      "description": "URI of MongoDB (e.g. mongodb+srv://username:password@example.com/database)" 
     }
   },
   "buildpacks": [
