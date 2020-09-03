@@ -4,9 +4,8 @@ import subprocess
 import requests
 import json
 import os
-from pydrive.auth import GoogleAuth
+from pydrive.auth import GoogleAuth, ServiceAccountCredentials
 from pydrive.drive import GoogleDrive
-from oauth2client.service_account import ServiceAccountCredentials
 
 def send_discord(failed):
 
