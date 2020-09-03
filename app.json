@@ -11,6 +11,9 @@
     },
     "MONGODB_URI": {
       "description": "URI of MongoDB (e.g. mongodb+srv://username:password@example.com/database)" 
+    },
+    "GOOGLE_CREDENTIALS_JSON": {
+      "description": "Follow \"Getting Google credentials\" section of README.md and paste credentials here"
     }
   },
   "buildpacks": [
