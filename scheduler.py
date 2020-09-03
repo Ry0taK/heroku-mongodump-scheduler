@@ -36,7 +36,7 @@ gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name("credential
 gauth.auth_method = "service"
 drive = GoogleDrive(gauth)
 
-f = drive.CreateFile({"title": backup_name}) 
+f = drive.CreateFile({"title": backup_name, "parents": [{"id": os.environ.get("DRIVE_FOLDER_ID")}]}) 
 f.SetContentFile(backup_name)
 f.Upload()
 
