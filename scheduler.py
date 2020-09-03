@@ -24,7 +24,7 @@ with open("credentials.json", mode="w") as f:
 
 backup_name = "mongodump-{date}.gz".format(date=datetime.datetime.now().strftime("%Y%m%d%H%M%S"))
 
-process = subprocess.run(["mongodump", "--uri", os.environ.get("MONGODB_URI"), "--gzip", "--archive", backup_name])
+process = subprocess.run(["mongodump", "--uri", os.environ.get("MONGODB_URI"), "--gzip", "--archive={backup_name}".format(backup_name=backup_name)])
 if process.returncode != 0:
     send_discord(True)
     quit()
