@@ -34,8 +34,18 @@ scope = ["https://www.googleapis.com/auth/drive"]
 gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
 drive = GoogleDrive(gauth)
 
-f = drive.CreateFile({"title": backup_name}) 
-f.SetContentFile(backup_name)
-f.Upload()
+results = drive.files().list(pageSize=10, fields="nextPageToken, files(id, name)").execute()
+items = results.get('files', [])
+
+if not items:
+    print('No files found.')
+else:
+    print('Files:')
+    for item in items:
+        print(u'{0} ({1})'.format(item['name'], item['id']))
+
+#f = drive.CreateFile({"title": backup_name}) 
+#f.SetContentFile(backup_name)
+#f.Upload()
 
 send_discord(False)
