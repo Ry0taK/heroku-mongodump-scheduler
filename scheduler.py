@@ -23,8 +23,6 @@ if process.returncode != 0:
     send_discord(True)
     quit()
 
-send_discord(False)
-    
-
 # TODO: Upload backup.gz to somewhere
 
+send_discord(False)
