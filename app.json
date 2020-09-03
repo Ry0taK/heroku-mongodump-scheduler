@@ -1,0 +1,15 @@
+{
+  "name": "Heroku MongoDump Scheduler",
+  "description": "Schedule MongoDump to backup your MongoDB safely.",
+  "image": "heroku/python",
+  "repository": "https://github.com/Ry0taK/heroku-mongodump-scheduler",
+  "keywords": ["python", "discord", "mongodb" ],
+  "addons": [ "scheduler" ],
+  "env": {
+    "DISCORD_WEBHOOK": {
+      "description": "URL of your Discord Webhook"
+    }
+  },
+  "environments": {
+  }
+}
