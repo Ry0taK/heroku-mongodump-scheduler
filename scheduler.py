@@ -2,6 +2,7 @@
 import datetime
 import subprocess
 import requests
+import pydrive
 import json
 import os
 
@@ -21,11 +22,20 @@ def send_discord(failed):
 with open("credentials.json", mode="w") as f:
     f.write(os.environ.get("GOOGLE_CREDENTIALS_JSON"))
 
-process = subprocess.run(["mongodump", "--uri", os.environ.get("MONGODB_URI"), "--gzip", "--archive=mongodump-{date}.gz".format(date=datetime.datetime.now().strftime('%Y%m%d%H%M%S'))])
+backup_name = "mongodump-{date}.gz".format(date=datetime.datetime.now().strftime("%Y%m%d%H%M%S"))
+
+process = subprocess.run(["mongodump", "--uri", os.environ.get("MONGODB_URI"), "--gzip", "--archive", backup_name])
 if process.returncode != 0:
     send_discord(True)
     quit()
 
-# TODO: Upload backup.gz to Google Drive
+gauth = GoogleAuth()
+scope = ["https://www.googleapis.com/auth/drive"]
+gauth.credentials = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+drive = GoogleDrive(gauth)
+
+f = drive.CreateFile({"title": backup_name}) 
+f.SetContentFile(backup_name)
+f.Upload()
 
 send_discord(False)
