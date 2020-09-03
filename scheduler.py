@@ -16,13 +16,13 @@ send_discord(False)
 
 def send_discord(failed):
 
-discord_body = {
-    "content": "MongoDB backup completed!"
-}
-
-if failed:
     discord_body = {
-        "content": "MongoDB backup failed. Check console for more details"
+        "content": "MongoDB backup completed!"
     }
 
-requests.post(os.environ.get("DISCORD_WEBHOOK"), json.dumps(discord_body), headers={"Content-Type":"application/json"})
+    if failed:
+        discord_body = {
+            "content": "MongoDB backup failed. Check console for more details"
+        }
+
+    requests.post(os.environ.get("DISCORD_WEBHOOK"), json.dumps(discord_body), headers={"Content-Type":"application/json"})
