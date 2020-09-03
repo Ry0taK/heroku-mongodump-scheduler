@@ -16,6 +16,9 @@
   "buildpacks": [
     {
       "url": "https://github.com/trustradius/heroku-buildpack-mongo"
+    },
+    {
+      "url": "heroku/python"
     }
   ]
 }
