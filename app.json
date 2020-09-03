@@ -13,7 +13,10 @@
       "description": "URI of MongoDB (e.g. mongodb+srv://username:password@example.com/database)" 
     },
     "GOOGLE_CREDENTIALS_JSON": {
-      "description": "Follow \"Getting Google credentials\" section of README.md and paste credentials here"
+      "description": "JSON text of Google Service Account credentials"
+    },
+    "DRIVE_FOLDER_ID": {
+      "description": "ID of the Google Drive folder"
     }
   },
   "buildpacks": [
