@@ -4,7 +4,9 @@ import requests
 import json
 import os
 
-print(subprocess.run(["mongodump", "--uri", os.environ.get("MONGODB_URI"), "--gzip", "--archive=backup.gz"], capture_output=True))
+subprocess.run(["mongodump", "--uri", os.environ.get("MONGODB_URI"), "--gzip", "--archive=backup.gz"])
+
+# TODO: Upload backup.gz to somewhere
 
 discord_body = {
     "content": "MongoDB backup completed!"
